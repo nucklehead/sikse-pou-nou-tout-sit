@@ -14,5 +14,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "popper.js": "https://unpkg.com/popper.js"
+  }
 }

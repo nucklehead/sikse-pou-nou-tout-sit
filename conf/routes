@@ -17,3 +17,8 @@ GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
 *       /:controller/:action                    :controller.:action
+
+# Map static resources from the /app/public folder to the /public path
+POST     /account/                              AccountController.Create
+
+POST     /login/                                AccountController.Login

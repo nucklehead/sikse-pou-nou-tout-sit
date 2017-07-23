@@ -3,5 +3,5 @@
  */
 
 $(function() {
-    $.material.init()
+//    $.material.init()
 });
