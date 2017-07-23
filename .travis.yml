@@ -9,6 +9,6 @@ script: revel test github.com/nucklehead/sikse-pou-nou-tout-sit
 
 deploy:
   provider: heroku
-  api_key: test
+  api_key: $HEROKU_KEY
   app: sikse-pou-nou-tout
 
