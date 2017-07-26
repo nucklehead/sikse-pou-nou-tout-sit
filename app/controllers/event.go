@@ -27,8 +27,8 @@ func (c EventController) Read(eventID string) revel.Result {
 	return c.RenderJSON(Events[eventID])
 }
 
-func (c EventController) Update(event models.Event) revel.Result {
-	Events[event.ID] = event
+func (c EventController) Update(eventID string, event models.Event) revel.Result {
+	Events[eventID] = event
 	return c.RenderJSON(event)
 }
 

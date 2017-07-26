@@ -27,8 +27,8 @@ func (c OptionController) Read(optionID string) revel.Result {
 	return c.RenderJSON(Options[optionID])
 }
 
-func (c OptionController) Update(option models.Option) revel.Result {
-	Options[option.ID] = option
+func (c OptionController) Update(optionID string, option models.Option) revel.Result {
+	Options[optionID] = option
 	return c.RenderJSON(option)
 }
 

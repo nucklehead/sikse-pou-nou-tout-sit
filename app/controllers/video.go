@@ -27,8 +27,8 @@ func (c VideoController) Read(videoID string) revel.Result {
 	return c.RenderJSON(Videos[videoID])
 }
 
-func (c VideoController) Update(video models.Video) revel.Result {
-	Videos[video.ID] = video
+func (c VideoController) Update(videoID string, video models.Video) revel.Result {
+	Videos[videoID] = video
 	return c.RenderJSON(video)
 }
 

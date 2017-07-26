@@ -22,3 +22,11 @@ GET     /public/*filepath                       Static.Serve("public")
 POST     /account/                              AccountController.Create
 
 POST     /login/                                AccountController.Login
+
+# Comments
+POST     /comment/                              CommentController.Create
+GET     /account/                             CommentController.List
+GET     /account/:id                           CommentController.Read
+PUT     /account/:id                              CommentController.Update
+DELETE     /account/:id                              CommentController.Delete
+GET     /account/show                              CommentController.ShowList

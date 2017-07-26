@@ -27,8 +27,8 @@ func (c SponsorController) Read(sponsorID string) revel.Result {
 	return c.RenderJSON(Sponsors[sponsorID])
 }
 
-func (c SponsorController) Update(sponsor models.Sponsor) revel.Result {
-	Sponsors[sponsor.ID] = sponsor
+func (c SponsorController) Update(sponsorID string, sponsor models.Sponsor) revel.Result {
+	Sponsors[sponsorID] = sponsor
 	return c.RenderJSON(sponsor)
 }
 

@@ -26,8 +26,8 @@ func (c CommentController) Read(commentID string) revel.Result {
 	return c.RenderJSON(Comments[commentID])
 }
 
-func (c CommentController) Update(comment models.Comment) revel.Result {
-	Comments[comment.ID] = comment
+func (c CommentController) Update(commentID string, comment models.Comment) revel.Result {
+	Comments[commentID] = comment
 	return c.RenderJSON(comment)
 }
 
