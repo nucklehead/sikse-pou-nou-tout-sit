@@ -5,38 +5,42 @@ import (
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
 	"net/http"
+	uuid "github.com/hashicorp/go-uuid"
+
 )
 
-var Videos []models.Video
+var Sponsors map[string]models.Sponsor
 
-type VideoController struct {
+type SponsorController struct {
 	*revel.Controller
 }
 
-func (c VideoController) Create(video models.Video) revel.Result {
-	Videos = append(Videos, video)
+func (c SponsorController) Create(sponsor models.Sponsor) revel.Result {
+	id, _ := uuid.GenerateUUID()
+	Sponsors[id] = sponsor
 	c.Response.Status = http.StatusCreated
-	return c.RenderJSON(video)
+	return c.RenderJSON(sponsor)
 }
 
 
-func (c VideoController) Read(videoID string) revel.Result {
-	video := models.Video{}
-	return c.RenderJSON(video)
+func (c SponsorController) Read(sponsorID string) revel.Result {
+	return c.RenderJSON(Sponsors[sponsorID])
 }
 
-func (c VideoController) Update(video models.Video) revel.Result {
-	return c.RenderJSON(video)
+func (c SponsorController) Update(sponsor models.Sponsor) revel.Result {
+	Sponsors[sponsor.ID] = sponsor
+	return c.RenderJSON(sponsor)
 }
 
-func (c VideoController) Delete(videoID string) revel.Result {
+func (c SponsorController) Delete(sponsorID string) revel.Result {
+	delete(Sponsors, sponsorID)
 	return c.RenderJSON("")
 }
 
-func (c VideoController) List() revel.Result {
-	return c.RenderJSON(Videos)
+func (c SponsorController) List() revel.Result {
+	return c.RenderJSON(Sponsors)
 }
 
-func (c VideoController) ShowList() revel.Result {
-	return c.Render(Videos)
+func (c SponsorController) ShowList() revel.Result {
+	return c.Render(Sponsors)
 }

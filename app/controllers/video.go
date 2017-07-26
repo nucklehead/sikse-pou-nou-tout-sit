@@ -5,38 +5,42 @@ import (
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
 	"net/http"
+	uuid "github.com/hashicorp/go-uuid"
+
 )
 
-var Options []models.Option
+var Videos map[string]models.Video
 
-type OptionController struct {
+type VideoController struct {
 	*revel.Controller
 }
 
-func (c OptionController) Create(option models.Option) revel.Result {
-	Options = append(Options, option)
+func (c VideoController) Create(video models.Video) revel.Result {
+	id, _ := uuid.GenerateUUID()
+	Videos[id] = video
 	c.Response.Status = http.StatusCreated
-	return c.RenderJSON(option)
+	return c.RenderJSON(video)
 }
 
 
-func (c OptionController) Read(optionID string) revel.Result {
-	option := models.Option{}
-	return c.RenderJSON(option)
+func (c VideoController) Read(videoID string) revel.Result {
+	return c.RenderJSON(Videos[videoID])
 }
 
-func (c OptionController) Update(option models.Option) revel.Result {
-	return c.RenderJSON(option)
+func (c VideoController) Update(video models.Video) revel.Result {
+	Videos[video.ID] = video
+	return c.RenderJSON(video)
 }
 
-func (c OptionController) Delete(optionID string) revel.Result {
+func (c VideoController) Delete(videoID string) revel.Result {
+	delete(Videos, videoID)
 	return c.RenderJSON("")
 }
 
-func (c OptionController) List() revel.Result {
-	return c.RenderJSON(Options)
+func (c VideoController) List() revel.Result {
+	return c.RenderJSON(Videos)
 }
 
-func (c OptionController) ShowList() revel.Result {
-	return c.Render(Options)
+func (c VideoController) ShowList() revel.Result {
+	return c.Render(Videos)
 }

@@ -5,38 +5,42 @@ import (
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
 	"net/http"
+	uuid "github.com/hashicorp/go-uuid"
+
 )
 
-var Sponsors []models.Sponsor
+var Events map[string]models.Event
 
-type SponsorController struct {
+type EventController struct {
 	*revel.Controller
 }
 
-func (c SponsorController) Create(sponsor models.Sponsor) revel.Result {
-	Sponsors = append(Sponsors, sponsor)
+func (c EventController) Create(event models.Event) revel.Result {
+	id, _ := uuid.GenerateUUID()
+	Events[id] = event
 	c.Response.Status = http.StatusCreated
-	return c.RenderJSON(sponsor)
+	return c.RenderJSON(event)
 }
 
 
-func (c SponsorController) Read(sponsorID string) revel.Result {
-	sponsor := models.Sponsor{}
-	return c.RenderJSON(sponsor)
+func (c EventController) Read(eventID string) revel.Result {
+	return c.RenderJSON(Events[eventID])
 }
 
-func (c SponsorController) Update(sponsor models.Sponsor) revel.Result {
-	return c.RenderJSON(sponsor)
+func (c EventController) Update(event models.Event) revel.Result {
+	Events[event.ID] = event
+	return c.RenderJSON(event)
 }
 
-func (c SponsorController) Delete(sponsorID string) revel.Result {
+func (c EventController) Delete(eventID string) revel.Result {
+	delete(Events, eventID)
 	return c.RenderJSON("")
 }
 
-func (c SponsorController) List() revel.Result {
-	return c.RenderJSON(Sponsors)
+func (c EventController) List() revel.Result {
+	return c.RenderJSON(Events)
 }
 
-func (c SponsorController) ShowList() revel.Result {
-	return c.Render(Sponsors)
+func (c EventController) ShowList() revel.Result {
+	return c.Render(Events)
 }

@@ -4,30 +4,43 @@ import (
 	"github.com/revel/revel"
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
+	"net/http"
+	uuid "github.com/hashicorp/go-uuid"
+
 )
 
-var Accounts []models.Account
+var Options map[string]models.Option
 
-type AccountController struct {
+type OptionController struct {
 	*revel.Controller
 }
 
-func (c AccountController) Create(account models.Account) revel.Result {
-    Accounts = append(Accounts, account)
-    account.Password = ""
-	return c.RenderJSON(account)
+func (c OptionController) Create(option models.Option) revel.Result {
+	id, _ := uuid.GenerateUUID()
+	Options[id] = option
+	c.Response.Status = http.StatusCreated
+	return c.RenderJSON(option)
 }
 
-func (c AccountController) Login(account models.Account) revel.Result {
-    result := make(map[string]interface{})
-    result["loggedIn"] = false
-    for _, savedAccount := range Accounts {
-        if savedAccount.Username == account.Username && savedAccount.Password == account.Password {
-            result["loggedIn"] = true
-            b := make([]byte, 8)
-            rand.Read(b)
-            result["token"] = b
-        }
-    }
-    return c.RenderJSON(result)
+
+func (c OptionController) Read(optionID string) revel.Result {
+	return c.RenderJSON(Options[optionID])
+}
+
+func (c OptionController) Update(option models.Option) revel.Result {
+	Options[option.ID] = option
+	return c.RenderJSON(option)
+}
+
+func (c OptionController) Delete(optionID string) revel.Result {
+	delete(Options, optionID)
+	return c.RenderJSON("")
+}
+
+func (c OptionController) List() revel.Result {
+	return c.RenderJSON(Options)
+}
+
+func (c OptionController) ShowList() revel.Result {
+	return c.Render(Options)
 }

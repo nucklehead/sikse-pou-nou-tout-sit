@@ -5,38 +5,41 @@ import (
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
 	"net/http"
+	uuid "github.com/hashicorp/go-uuid"
 )
 
-var Options []models.Option
+var Comments map[string]models.Comment
 
-type OptionController struct {
+type CommentController struct {
 	*revel.Controller
 }
 
-func (c OptionController) Create(option models.Option) revel.Result {
-	Options = append(Options, option)
+func (c CommentController) Create(comment models.Comment) revel.Result {
+	id, _ := uuid.GenerateUUID()
+	Comments[id] = comment
 	c.Response.Status = http.StatusCreated
-	return c.RenderJSON(option)
+	return c.RenderJSON(comment)
 }
 
 
-func (c OptionController) Read(optionID string) revel.Result {
-	option := models.Option{}
-	return c.RenderJSON(option)
+func (c CommentController) Read(commentID string) revel.Result {
+	return c.RenderJSON(Comments[commentID])
 }
 
-func (c OptionController) Update(option models.Option) revel.Result {
-	return c.RenderJSON(option)
+func (c CommentController) Update(comment models.Comment) revel.Result {
+	Comments[comment.ID] = comment
+	return c.RenderJSON(comment)
 }
 
-func (c OptionController) Delete(optionID string) revel.Result {
+func (c CommentController) Delete(commentID string) revel.Result {
+	delete(Comments, commentID)
 	return c.RenderJSON("")
 }
 
-func (c OptionController) List() revel.Result {
-	return c.RenderJSON(Options)
+func (c CommentController) List() revel.Result {
+	return c.RenderJSON(Comments)
 }
 
-func (c OptionController) ShowList() revel.Result {
-	return c.Render(Options)
+func (c CommentController) ShowList() revel.Result {
+	return c.Render(Comments)
 }
