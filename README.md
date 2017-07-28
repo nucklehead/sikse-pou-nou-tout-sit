@@ -1,7 +1,8 @@
 
 [![Build Status](https://travis-ci.org/nucklehead/sikse-pou-nou-tout-sit.svg?branch=master)](https://travis-ci.org/nucklehead/sikse-pou-nou-tout-sit)
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=ikse-pou-nou-tout)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=sikse-pou-nou-tout&style=flat&svg=1)](https://sikse-pou-nou-tout.herokuapp.com/)
+
 
 # Welcome to Revel
 
