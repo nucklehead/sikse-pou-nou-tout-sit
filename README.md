@@ -4,7 +4,7 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=sikse-pou-nou-tout&style=flat&svg=1)](https://sikse-pou-nou-tout.herokuapp.com/)
 
 
-# Welcome to Revel
+# Welcome to SPNT with Revel
 
 A high-productivity web framework for the [Go language](http://www.golang.org/).
 
