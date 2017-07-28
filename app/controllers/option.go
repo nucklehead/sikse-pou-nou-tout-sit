@@ -3,7 +3,6 @@ package controllers
 import (
 	"github.com/revel/revel"
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
-	"crypto/rand"
 	"net/http"
 	uuid "github.com/hashicorp/go-uuid"
 
@@ -17,23 +16,24 @@ type OptionController struct {
 
 func (c OptionController) Create(option models.Option) revel.Result {
 	id, _ := uuid.GenerateUUID()
+	option.ID = id
 	Options[id] = option
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(option)
 }
 
 
-func (c OptionController) Read(optionID string) revel.Result {
-	return c.RenderJSON(Options[optionID])
+func (c OptionController) Read(id string) revel.Result {
+	return c.RenderJSON(Options[id])
 }
 
-func (c OptionController) Update(optionID string, option models.Option) revel.Result {
-	Options[optionID] = option
+func (c OptionController) Update(id string, option models.Option) revel.Result {
+	Options[id] = option
 	return c.RenderJSON(option)
 }
 
-func (c OptionController) Delete(optionID string) revel.Result {
-	delete(Options, optionID)
+func (c OptionController) Delete(id string) revel.Result {
+	delete(Options, id)
 	return c.RenderJSON("")
 }
 

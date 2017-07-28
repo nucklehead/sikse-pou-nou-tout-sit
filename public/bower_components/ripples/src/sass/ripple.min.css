@@ -1,0 +1,1 @@
+.ripple{position:relative;overflow:hidden;transform:translate3d(0, 0, 0);cursor:pointer}.ripple .ink{display:block;position:absolute;pointer-events:none;border-radius:50%;transform:scale(0);background:#fff;opacity:1}.ripple .ink.animate{animation:ripple .5s linear}.ripple.ripple-dark .ink{background:gray}@keyframes ripple{100%{opacity:0;transform:scale(2.5)}}

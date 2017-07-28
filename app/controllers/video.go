@@ -3,7 +3,6 @@ package controllers
 import (
 	"github.com/revel/revel"
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
-	"crypto/rand"
 	"net/http"
 	uuid "github.com/hashicorp/go-uuid"
 
@@ -17,23 +16,24 @@ type VideoController struct {
 
 func (c VideoController) Create(video models.Video) revel.Result {
 	id, _ := uuid.GenerateUUID()
+	video.ID = id
 	Videos[id] = video
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(video)
 }
 
 
-func (c VideoController) Read(videoID string) revel.Result {
-	return c.RenderJSON(Videos[videoID])
+func (c VideoController) Read(id string) revel.Result {
+	return c.RenderJSON(Videos[id])
 }
 
-func (c VideoController) Update(videoID string, video models.Video) revel.Result {
-	Videos[videoID] = video
+func (c VideoController) Update(id string, video models.Video) revel.Result {
+	Videos[id] = video
 	return c.RenderJSON(video)
 }
 
-func (c VideoController) Delete(videoID string) revel.Result {
-	delete(Videos, videoID)
+func (c VideoController) Delete(id string) revel.Result {
+	delete(Videos, id)
 	return c.RenderJSON("")
 }
 

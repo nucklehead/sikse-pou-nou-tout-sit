@@ -1,0 +1,35 @@
+{
+  "name": "ripples",
+  "description": "Effect that spreads like a wave in touch or click.",
+  "version": "1.0.4",
+  "keywords": [
+    "css3",
+    "js",
+    "less",
+    "animation",
+    "jquery",
+    "plugin"
+  ],
+  "homepage": "http://github.com/mutschler/ripple",
+  "main": [
+    "src/sass/ripple.scss",
+    "src/js/ripple.js"
+  ],
+  "ignore": [
+    ".*",
+    "*.yml",
+    "*.html",
+    "*.json",
+    "Gruntfile.js"
+  ],
+  "_release": "1.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.4",
+    "commit": "2a438d83398fe773b0365d9712f84ada251820ee"
+  },
+  "_source": "https://github.com/mutschler/ripple.git",
+  "_target": "^1.0.4",
+  "_originalSource": "ripples",
+  "_direct": true
+}

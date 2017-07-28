@@ -1,4 +1,4 @@
-{{set . "title" "Comment List"}}
+{{set . "title" "Event List"}}
 {{template "header.html" .}}
 
 <nav class="navbar navbar-warning">
@@ -18,12 +18,15 @@
 </nav>
 <div class="container-fluid" style="padding: 20px;">
 <div class="row">
-  {{ range $key, $value := .Comments}}
+  {{ range $key, $value := .Events}}
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <div class="caption">
-            <h3>{{$value.User}}</h3>
-            <p>{{$value.Content}}</p>
+            <h2>{{$value.Title}}</h2>
+            <h3>{{$value.Date}}</h3>
+            <h3>{{$value.Speaker}}</h3>
+            <h3>{{$value.Location}}</h3>
+            <p>{{$value.Description}}</p>
             <p>
             <a href="#" class="btn btn-primary btn-raised" role="button">Delete</a> 
             <a href="#" class="btn btn-default btn-raised" role="button">Edit</a>

@@ -16,7 +16,7 @@ GET     /favicon.ico                            404
 GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
-*       /:controller/:action                    :controller.:action
+#*       /:controller/:action                    :controller.:action
 
 # Map static resources from the /app/public folder to the /public path
 POST     /account/                              AccountController.Create
@@ -29,4 +29,36 @@ GET     /comment/                             CommentController.List
 GET     /comment/:id                           CommentController.Read
 PUT     /comment/:id                              CommentController.Update
 DELETE     /comment/:id                              CommentController.Delete
-GET     /comment/show                              CommentController.ShowList
+GET     /show/comment/                             CommentController.ShowList
+
+# Events
+POST     /event/                              EventController.Create
+GET     /event/                             EventController.List
+GET     /event/:id                           EventController.Read
+PUT     /event/:id                              EventController.Update
+DELETE     /event/:id                              EventController.Delete
+GET     /show/event/                             EventController.ShowList
+
+# Options
+POST     /option/                              OptionController.Create
+GET     /option/                             OptionController.List
+GET     /option/:id                           OptionController.Read
+PUT     /option/:id                              OptionController.Update
+DELETE     /option/:id                              OptionController.Delete
+GET     /show/option/                             OptionController.ShowList
+
+# Sponsors
+POST     /sponsor/                              SponsorController.Create
+GET     /sponsor/                             SponsorController.List
+GET     /sponsor/:id                           SponsorController.Read
+PUT     /sponsor/:id                              SponsorController.Update
+DELETE     /sponsor/:id                              SponsorController.Delete
+GET     /show/sponsor/                             SponsorController.ShowList
+
+# Videos
+POST     /video/                              VideoController.Create
+GET     /video/                             VideoController.List
+GET     /video/:id                           VideoController.Read
+PUT     /video/:id                              VideoController.Update
+DELETE     /video/:id                              VideoController.Delete
+GET     /show/video/                             VideoController.ShowList

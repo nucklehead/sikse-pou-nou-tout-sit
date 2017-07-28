@@ -1,4 +1,4 @@
-{{set . "title" "Comment List"}}
+{{set . "title" "Option List"}}
 {{template "header.html" .}}
 
 <nav class="navbar navbar-warning">
@@ -18,12 +18,12 @@
 </nav>
 <div class="container-fluid" style="padding: 20px;">
 <div class="row">
-  {{ range $key, $value := .Comments}}
+  {{ range $key, $value := .Options}}
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <div class="caption">
-            <h3>{{$value.User}}</h3>
-            <p>{{$value.Content}}</p>
+            <h3>{{$value.Name}}</h3>
+            <p>{{$value.Description}}</p>
             <p>
             <a href="#" class="btn btn-primary btn-raised" role="button">Delete</a> 
             <a href="#" class="btn btn-default btn-raised" role="button">Edit</a>
