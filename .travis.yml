@@ -4,7 +4,9 @@ language: go
 go:
 - 1.6
 
-install: go get github.com/revel/cmd/revel
+install: 
+  - go get ./...
+  - go get github.com/revel/cmd/revel
 script: revel test github.com/nucklehead/sikse-pou-nou-tout-sit
 
 deploy:
