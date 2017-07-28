@@ -25,8 +25,8 @@ POST     /login/                                AccountController.Login
 
 # Comments
 POST     /comment/                              CommentController.Create
-GET     /account/                             CommentController.List
-GET     /account/:id                           CommentController.Read
-PUT     /account/:id                              CommentController.Update
-DELETE     /account/:id                              CommentController.Delete
-GET     /account/show                              CommentController.ShowList
+GET     /comment/                             CommentController.List
+GET     /comment/:id                           CommentController.Read
+PUT     /comment/:id                              CommentController.Update
+DELETE     /comment/:id                              CommentController.Delete
+GET     /comment/show                              CommentController.ShowList
