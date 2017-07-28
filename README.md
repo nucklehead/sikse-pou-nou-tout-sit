@@ -1,3 +1,8 @@
+
+[![Build Status](https://travis-ci.org/nucklehead/sikse-pou-nou-tout-sit.svg?branch=master)](https://travis-ci.org/nucklehead/sikse-pou-nou-tout-sit)
+
+[![Heroku](https://heroku-badge.herokuapp.com/?app=ikse-pou-nou-tout)]
+
 # Welcome to Revel
 
 A high-productivity web framework for the [Go language](http://www.golang.org/).
