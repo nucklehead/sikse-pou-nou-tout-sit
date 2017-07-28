@@ -1,0 +1,25 @@
+{
+  "name": "ripples",
+  "description": "Effect that spreads like a wave in touch or click.",
+  "version": "1.0.1",
+  "keywords": [
+    "css3",
+    "js",
+    "less",
+    "animation",
+    "jquery",
+    "plugin"
+  ],
+  "homepage": "http://github.com/mutschler/ripple",
+  "main": [
+    "src/sass/ripple.scss",
+    "src/js/ripple.js"
+  ],
+  "ignore": [
+    ".*",
+    "*.yml",
+    "*.html",
+    "*.json",
+    "Gruntfile.js"
+  ]
+}

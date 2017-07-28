@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="btn btn-danger btn-raised navbar-btn">Sign in</button>
+      <button type="button" class="btn btn-danger btn-raised navbar-btn">SPNT</button>
       <a class="navbar-brand" href="#">Brand</a>
     </div>
     <div class="navbar-collapse collapse navbar-warning-collapse">
@@ -21,33 +21,71 @@
 <div class="row">
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTVkNmI3MjBhZmUgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWQ2YjcyMGFmZSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44MDQ2ODc1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" >
+      <i class="material-icons" style="font-size:100px;">comment</i>
       <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        <h3>Komante</h3>
+        <p>Lis komante yo</p>
         <p>
-        <a href="#" class="btn btn-primary btn-raised" role="button">Button</a> 
-        <a href="#" class="btn btn-default btn-raised" role="button">Button</a>
+        <a href="/show/comment" class="btn btn-primary btn-raised" role="button">Antre</a> 
         </p>
       </div>
     </div>
   </div>
-  {{ range $index, $value := .Accounts}}
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTVkNmI3MjBhZmUgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWQ2YjcyMGFmZSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44MDQ2ODc1IiB5PSIxMDUuMSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" >
-          <div class="caption">
-            <h3>{{$value.Username}}</h3>
-            <p>{{$value.Email}}</p>
-            <p>{{$value.Phone}}</p>
-            <p>
-            <a href="#" class="btn btn-primary btn-raised" role="button">Button</a> 
-            <a href="#" class="btn btn-default btn-raised" role="button">Button</a>
-            </p>
-          </div>
-        </div>
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <i class="material-icons" style="font-size:100px;">class</i>
+      <div class="caption">
+        <h3>Klass</h3>
+        <p>Lis klass yo</p>
+        <p>
+        <a href="/show/event" class="btn btn-primary btn-raised" role="button">Antre</a> 
+        </p>
       </div>
-	{{end}}
+    </div>
+  </div>
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <i class="material-icons" style="font-size:100px;">thumb_up</i>
+      <div class="caption">
+        <h3>Sponso</h3>
+        <p>Lis sponso yo</p>
+        <p>
+        <a href="/show/sponsor" class="btn btn-primary btn-raised" role="button">Antre</a> 
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <i class="material-icons" style="font-size:100px;">blur_on</i>
+      <div class="caption">
+        <h3>Opsyon</h3>
+        <p>Lis opsyon yo</p>
+        <p>
+        <a href="/show/option" class="btn btn-primary btn-raised" role="button">Antre</a> 
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <i class="material-icons" style="font-size:100px;">videocam</i>
+      <div class="caption">
+        <h3>Videyo</h3>
+        <p>List videyo yo</p>
+        <p>
+        <a href="/show/video" class="btn btn-primary btn-raised" role="button">Antre</a> 
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  
 </div>
 </div>
 
