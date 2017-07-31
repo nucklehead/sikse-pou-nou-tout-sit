@@ -4,7 +4,7 @@ import (
 	"github.com/revel/revel"
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"crypto/rand"
-
+	uuid "github.com/hashicorp/go-uuid"
 )
 
 var Accounts []models.Account
@@ -14,6 +14,8 @@ type AccountController struct {
 }
 
 func (c AccountController) Create(account models.Account) revel.Result {
+    id, _ := uuid.GenerateUUID()
+    account.ID = id
     Accounts = append(Accounts, account)
     account.Password = ""
 	return c.RenderJSON(account)
