@@ -28,6 +28,7 @@ func (c AccountController) Login(account models.Account) revel.Result {
             b := make([]byte, 8)
             rand.Read(b)
             result["token"] = b
+            result["id"] = savedAccount.ID
         }
     }
     return c.RenderJSON(result)
