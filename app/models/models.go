@@ -2,53 +2,65 @@ package models
 
 import (
 	"time"
-	uuid "github.com/hashicorp/go-uuid"
 
+	uuid "github.com/hashicorp/go-uuid"
 )
 
 type DBElement struct {
-	ID      string
+	ID string
 }
 
 type Account struct {
 	DBElement
-	Username      string
-	Password      string
-	Email         string
-	Phone         string
+	Username string
+	Password string
+	Email    string
+	Phone    string
 }
 type Option struct {
 	DBElement
-	Name      string
-	Description      string
+	Name        string
+	Description string
 }
 
 type Comment struct {
 	DBElement
-	User      string
-	Content      string
+	User    string
+	Content string
 }
 
 type Video struct {
 	DBElement
-	Link      string
-	Title      string
-	Description      string
+	Link        string
+	Title       string
+	Description string
 }
 
 type Sponsor struct {
 	DBElement
-	Name      string
-	Description      string
+	Name        string
+	Description string
 }
 
 type Event struct {
 	DBElement
-	Title      string
-	Date      time.Time
-	Description      string
-	Speaker      string
-	Location      time.Location
+	Title       string
+	Date        time.Time
+	Description string
+	Speaker     string
+	Location    time.Location
+	OptionID    string
+}
+
+type Presenter struct {
+	DBElement
+	FirstName string
+	LastName  string
+	Twitter   string
+	About     string
+	Location  time.Location
+	Email     string
+	Phone     string
 }
 
 func newAccount(username, password, email, phone string) Account {
@@ -58,25 +70,30 @@ func newAccount(username, password, email, phone string) Account {
 
 func newOption(name, description string) Option {
 	id, _ := uuid.GenerateUUID()
-	return Option{DBElement{id},name, description}
+	return Option{DBElement{id}, name, description}
 }
 
 func newComment(user, content string) Comment {
 	id, _ := uuid.GenerateUUID()
-	return Comment{DBElement{id},user, content}
+	return Comment{DBElement{id}, user, content}
 }
 
 func newVideo(link, title, description string) Video {
 	id, _ := uuid.GenerateUUID()
-	return Video{DBElement{id},link, title, description}
+	return Video{DBElement{id}, link, title, description}
 }
 
 func newSponsor(name, description string) Sponsor {
 	id, _ := uuid.GenerateUUID()
-	return Sponsor{DBElement{id},name, description}
+	return Sponsor{DBElement{id}, name, description}
 }
 
-func newEvent(title, description, speaker string, date time.Time, location time.Location) Event {
+func newEvent(title, description, speaker, optionID string, date time.Time, location time.Location) Event {
 	id, _ := uuid.GenerateUUID()
-	return Event{DBElement{id},title, date, description, speaker, location}
+	return Event{DBElement{id}, title, date, description, speaker, location, optionID}
+}
+
+func newPresenter(firstName, lastName, twitter, about, email, phone string, location time.Location) Presenter {
+	id, _ := uuid.GenerateUUID()
+	return Presenter{DBElement{id}, firstName, lastName, twitter, about, location, email, phone}
 }
