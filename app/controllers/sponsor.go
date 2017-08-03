@@ -1,14 +1,14 @@
 package controllers
 
 import (
-	"github.com/revel/revel"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"net/http"
-	uuid "github.com/hashicorp/go-uuid"
 
+	uuid "github.com/hashicorp/go-uuid"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"github.com/revel/revel"
 )
 
-var Sponsors map[string]models.Sponsor
+var Sponsors = map[string]models.Sponsor{}
 
 type SponsorController struct {
 	*revel.Controller
@@ -21,7 +21,6 @@ func (c SponsorController) Create(sponsor models.Sponsor) revel.Result {
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(sponsor)
 }
-
 
 func (c SponsorController) Read(id string) revel.Result {
 	return c.RenderJSON(Sponsors[id])

@@ -8,7 +8,7 @@ import (
 	"github.com/revel/revel"
 )
 
-var Presenters map[string]models.Presenter
+var Presenters = map[string]models.Presenter{}
 
 type PresenterController struct {
 	*revel.Controller
