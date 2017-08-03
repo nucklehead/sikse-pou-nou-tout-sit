@@ -1,14 +1,14 @@
 package controllers
 
 import (
-	"github.com/revel/revel"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"net/http"
-	uuid "github.com/hashicorp/go-uuid"
 
+	uuid "github.com/hashicorp/go-uuid"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"github.com/revel/revel"
 )
 
-var Events map[string]models.Event
+var Events = map[string]models.Event{}
 
 type EventController struct {
 	*revel.Controller
@@ -21,7 +21,6 @@ func (c EventController) Create(event models.Event) revel.Result {
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(event)
 }
-
 
 func (c EventController) Read(id string) revel.Result {
 	return c.RenderJSON(Events[id])
