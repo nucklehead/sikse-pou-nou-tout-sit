@@ -62,3 +62,11 @@ GET     /video/:id                           VideoController.Read
 PUT     /video/:id                              VideoController.Update
 DELETE     /video/:id                              VideoController.Delete
 GET     /show/video/                             VideoController.ShowList
+
+# Presenter
+POST     /presenter/                              PresenterController.Create
+GET     /presenter/                             PresenterController.List
+GET     /presenter/:id                           PresenterController.Read
+PUT     /presenter/:id                              PresenterController.Update
+DELETE     /presenter/:id                              PresenterController.Delete
+GET     /presenter/video/                             PresenterController.ShowList
