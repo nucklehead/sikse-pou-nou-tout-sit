@@ -1,14 +1,14 @@
 package controllers
 
 import (
-	"github.com/revel/revel"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"net/http"
-	uuid "github.com/hashicorp/go-uuid"
 
+	uuid "github.com/hashicorp/go-uuid"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"github.com/revel/revel"
 )
 
-var Videos map[string]models.Video
+var Videos = map[string]models.Video{}
 
 type VideoController struct {
 	*revel.Controller
@@ -21,7 +21,6 @@ func (c VideoController) Create(video models.Video) revel.Result {
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(video)
 }
-
 
 func (c VideoController) Read(id string) revel.Result {
 	return c.RenderJSON(Videos[id])

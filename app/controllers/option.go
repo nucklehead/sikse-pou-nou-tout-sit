@@ -1,14 +1,14 @@
 package controllers
 
 import (
-	"github.com/revel/revel"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"net/http"
-	uuid "github.com/hashicorp/go-uuid"
 
+	uuid "github.com/hashicorp/go-uuid"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"github.com/revel/revel"
 )
 
-var Options map[string]models.Option
+var Options = map[string]models.Option{}
 
 type OptionController struct {
 	*revel.Controller
@@ -21,7 +21,6 @@ func (c OptionController) Create(option models.Option) revel.Result {
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(option)
 }
-
 
 func (c OptionController) Read(id string) revel.Result {
 	return c.RenderJSON(Options[id])

@@ -1,10 +1,11 @@
 package controllers
 
 import (
-	"github.com/revel/revel"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 	"net/http"
+
 	uuid "github.com/hashicorp/go-uuid"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"github.com/revel/revel"
 )
 
 var Comments = map[string]models.Comment{}
@@ -20,7 +21,6 @@ func (c CommentController) Create(comment models.Comment) revel.Result {
 	c.Response.Status = http.StatusCreated
 	return c.RenderJSON(comment)
 }
-
 
 func (c CommentController) Read(id string) revel.Result {
 	return c.RenderJSON(Comments[id])
