@@ -5,7 +5,7 @@ set -x
 END_OF_DEV_SECTION="log.request.output = stderr"
 END_OF_PROD_SECTION="log.request.output = off"
 
-DATABASE_CONFIG="\n\nmongo.database = heroku_blh7zd3p\nmongo.path = ds149049.mlab.com:49049\nmongo.maxPool = 20"
+DATABASE_CONFIG="\n\nmongo.database = ${DATABASE}\nmongo.path = ${DATABASE_URI}\nmongo.maxPool = 20\nmongo.username = ${USERNAME}\nmongo.password = ${PASSWORD}"
 
 REVEL_MGO_FUNCTION="
 
