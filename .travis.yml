@@ -1,16 +1,24 @@
 ---
+services:
+  - mongodb
+
 language: go
 
 go:
-- 1.6
+  - 1.6
 
 install: 
   - go get ./...
   - go get github.com/revel/cmd/revel
-script: revel test github.com/nucklehead/sikse-pou-nou-tout-sit
+
+before_script:
+  - sleep 15
+  - mongo admin --eval 'db.createUser({user:"admin",pwd:"password",roles:[{ role:"userAdminAnyDatabase",db:"admin" }] });'
+
+script: 
+  - set -a && source .env && revel test github.com/nucklehead/sikse-pou-nou-tout-sit
 
 deploy:
   provider: heroku
   api_key: $HEROKU_KEY
   app: sikse-pou-nou-tout
-

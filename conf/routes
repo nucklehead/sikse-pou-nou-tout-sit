@@ -19,54 +19,62 @@ GET     /public/*filepath                       Static.Serve("public")
 #*       /:controller/:action                    :controller.:action
 
 # Map static resources from the /app/public folder to the /public path
-POST     /account/                              AccountController.Create
 
 POST     /login/                                AccountController.Login
 
-# Comments
-POST     /comment/                              CommentController.Create
-GET     /comment/                             CommentController.List
-GET     /comment/:id                           CommentController.Read
-PUT     /comment/:id                              CommentController.Update
-DELETE     /comment/:id                              CommentController.Delete
-GET     /show/comment/                             CommentController.ShowList
 
-# Events
-POST     /event/                              EventController.Create
-GET     /event/                             EventController.List
-GET     /event/:id                           EventController.Read
-PUT     /event/:id                              EventController.Update
-DELETE     /event/:id                              EventController.Delete
-GET     /show/event/                             EventController.ShowList
+# Account
+POST    /account/                             AccountController.Create
+GET     /account/                             AccountController.Index
+GET     /account/:id                          AccountController.Show
+PUT     /account/:id                          AccountController.Update
+DELETE  /account/:id                          AccountController.Delete
+GET     /show/account/                        AccountController.ShowList
 
-# Options
-POST     /option/                              OptionController.Create
-GET     /option/                             OptionController.List
-GET     /option/:id                           OptionController.Read
-PUT     /option/:id                              OptionController.Update
-DELETE     /option/:id                              OptionController.Delete
-GET     /show/option/                             OptionController.ShowList
+# Comment
+POST    /comment/                             CommentController.Create
+GET     /comment/                             CommentController.Index
+GET     /comment/:id                          CommentController.Show
+PUT     /comment/:id                          CommentController.Update
+DELETE  /comment/:id                          CommentController.Delete
+GET     /show/comment/                        CommentController.ShowList
 
-# Sponsors
-POST     /sponsor/                              SponsorController.Create
-GET     /sponsor/                             SponsorController.List
-GET     /sponsor/:id                           SponsorController.Read
-PUT     /sponsor/:id                              SponsorController.Update
-DELETE     /sponsor/:id                              SponsorController.Delete
-GET     /show/sponsor/                             SponsorController.ShowList
+# Event
+POST    /event/                             EventController.Create
+GET     /event/                             EventController.Index
+GET     /event/:id                          EventController.Show
+PUT     /event/:id                          EventController.Update
+DELETE  /event/:id                          EventController.Delete
+GET     /show/event/                        EventController.ShowList
 
-# Videos
-POST     /video/                              VideoController.Create
-GET     /video/                             VideoController.List
-GET     /video/:id                           VideoController.Read
-PUT     /video/:id                              VideoController.Update
-DELETE     /video/:id                              VideoController.Delete
-GET     /show/video/                             VideoController.ShowList
+# Option
+POST    /option/                             OptionController.Create
+GET     /option/                             OptionController.Index
+GET     /option/:id                          OptionController.Show
+PUT     /option/:id                          OptionController.Update
+DELETE  /option/:id                          OptionController.Delete
+GET     /show/option/                        OptionController.ShowList
 
 # Presenter
-POST     /presenter/                              PresenterController.Create
-GET     /presenter/                             PresenterController.List
-GET     /presenter/:id                           PresenterController.Read
-PUT     /presenter/:id                              PresenterController.Update
-DELETE     /presenter/:id                              PresenterController.Delete
-GET     /presenter/video/                             PresenterController.ShowList
+POST    /presenter/                             PresenterController.Create
+GET     /presenter/                             PresenterController.Index
+GET     /presenter/:id                          PresenterController.Show
+PUT     /presenter/:id                          PresenterController.Update
+DELETE  /presenter/:id                          PresenterController.Delete
+GET     /show/presenter/                        PresenterController.ShowList
+
+# Sponsor
+POST    /sponsor/                             SponsorController.Create
+GET     /sponsor/                             SponsorController.Index
+GET     /sponsor/:id                          SponsorController.Show
+PUT     /sponsor/:id                          SponsorController.Update
+DELETE  /sponsor/:id                          SponsorController.Delete
+GET     /show/sponsor/                        SponsorController.ShowList
+
+# Video
+POST    /video/                             VideoController.Create
+GET     /video/                             VideoController.Index
+GET     /video/:id                          VideoController.Show
+PUT     /video/:id                          VideoController.Update
+DELETE  /video/:id                          VideoController.Delete
+GET     /show/video/                        VideoController.ShowList

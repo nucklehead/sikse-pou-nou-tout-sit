@@ -1,45 +1,148 @@
 package controllers
 
 import (
-	"net/http"
-
-	uuid "github.com/hashicorp/go-uuid"
-	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
+	"encoding/json"
+	"errors"
 	"github.com/revel/revel"
+	"gopkg.in/mgo.v2/bson"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 )
-
-var Videos = map[string]models.Video{}
 
 type VideoController struct {
 	*revel.Controller
 }
 
-func (c VideoController) Create(video models.Video) revel.Result {
-	id, _ := uuid.GenerateUUID()
-	video.ID = id
-	Videos[id] = video
-	c.Response.Status = http.StatusCreated
+func (c VideoController) Index() revel.Result {
+	var (
+		videos []models.Video
+		err    error
+	)
+	videos, err = models.GetVideos()
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+	c.Response.Status = 200
+	return c.RenderJSON(videos)
+}
+
+func (c VideoController) Show(id string) revel.Result {
+	var (
+		video   models.Video
+		err     error
+		videoID bson.ObjectId
+	)
+
+	if id == "" {
+		errResp := buildErrResponse(errors.New("Invalid video id format"), "400")
+		c.Response.Status = 400
+		return c.RenderJSON(errResp)
+	}
+
+	videoID, err = convertToObjectIdHex(id)
+	if err != nil {
+		errResp := buildErrResponse(errors.New("Invalid video id format"), "400")
+		c.Response.Status = 400
+		return c.RenderJSON(errResp)
+	}
+
+	video, err = models.GetVideo(videoID)
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+
+	c.Response.Status = 200
 	return c.RenderJSON(video)
 }
 
-func (c VideoController) Read(id string) revel.Result {
-	return c.RenderJSON(Videos[id])
+func (c VideoController) Create() revel.Result {
+	var (
+		video models.Video
+		err   error
+	)
+
+	err = json.NewDecoder(c.Request.Body).Decode(&video)
+	if err != nil {
+		errResp := buildErrResponse(err, "403")
+		c.Response.Status = 403
+		return c.RenderJSON(errResp)
+	}
+
+	video, err = models.AddVideo(video)
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+	c.Response.Status = 201
+	return c.RenderJSON(video)
 }
 
-func (c VideoController) Update(id string, video models.Video) revel.Result {
-	Videos[id] = video
+func (c VideoController) Update() revel.Result {
+	var (
+		video models.Video
+		err   error
+	)
+	err = json.NewDecoder(c.Request.Body).Decode(&video)
+	if err != nil {
+		errResp := buildErrResponse(err, "400")
+		c.Response.Status = 400
+		return c.RenderJSON(errResp)
+	}
+
+	err = video.UpdateVideo()
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
 	return c.RenderJSON(video)
 }
 
 func (c VideoController) Delete(id string) revel.Result {
-	delete(Videos, id)
-	return c.RenderJSON("")
-}
+	var (
+		err     error
+		video   models.Video
+		videoID bson.ObjectId
+	)
+	if id == "" {
+		errResp := buildErrResponse(errors.New("Invalid video id format"), "400")
+		c.Response.Status = 400
+		return c.RenderJSON(errResp)
+	}
 
-func (c VideoController) List() revel.Result {
-	return c.RenderJSON(Videos)
+	videoID, err = convertToObjectIdHex(id)
+	if err != nil {
+		errResp := buildErrResponse(errors.New("Invalid video id format"), "400")
+		c.Response.Status = 400
+		return c.RenderJSON(errResp)
+	}
+
+	video, err = models.GetVideo(videoID)
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+	err = video.DeleteVideo()
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+	c.Response.Status = 204
+	return c.RenderJSON(nil)
 }
 
 func (c VideoController) ShowList() revel.Result {
-	return c.Render(Videos)
+	videos, err := models.GetVideos()
+	if err != nil {
+		errResp := buildErrResponse(err, "500")
+		c.Response.Status = 500
+		return c.RenderJSON(errResp)
+	}
+	return c.Render(videos)
 }

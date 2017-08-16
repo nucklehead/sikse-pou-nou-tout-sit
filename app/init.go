@@ -2,6 +2,8 @@ package app
 
 import (
 	"github.com/revel/revel"
+	"log"
+	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models/mongodb"
 )
 
 var (
@@ -34,7 +36,7 @@ func init() {
 	// revel.DevMode and revel.RunMode only work inside of OnAppStart. See Example Startup Script
 	// ( order dependent )
 	// revel.OnAppStart(ExampleStartupScript)
-	// revel.OnAppStart(InitDB)
+	 revel.OnAppStart(InitDB)
 	// revel.OnAppStart(FillCache)
 }
 
@@ -56,4 +58,14 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 //	if revel.DevMode == true {
 //		// Dev mode
 //	}
-//}
+
+func InitDB() {
+	mongodb.MaxPool = revel.Config.IntDefault("mongo.maxPool", 0)
+	mongodb.PATH,_ = revel.Config.String("mongo.path")
+	mongodb.DBNAME, _ = revel.Config.String("mongo.database")
+	mongodb.Username, _ = revel.Config.String("mongo.username")
+	mongodb.Password, _ = revel.Config.String("mongo.password")
+	mongodb.CheckAndInitServiceConnection()
+	log.Print(mongodb.DBNAME)
+}
+
