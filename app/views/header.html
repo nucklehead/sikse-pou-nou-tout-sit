@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="spntApp">
   <head>
     <title>{{.title}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -14,6 +14,9 @@
     <link rel="stylesheet" type="text/css" href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/public/bower_components/bootstrap-material-design/dist/bootstrap-material-design.min.css">
     <link rel="stylesheet" type="text/css" href="/public/bower_components/ripples/dist/css/ripple.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/public/css/app.css">
+    
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
     <script src="/public/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/public/bower_components/tether/dist/js/tether.min.js"></script>
@@ -21,6 +24,11 @@
     <script src="/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/public/bower_components/bootstrap-material-design/dist/bootstrap-material-design.umd.js"></script>
     <script src="/public/bower_components/ripples/dist/js/ripple.min.js"></script>
+    
+    <script src="/public/bower_components/angular/angular.js"></script>
+    <script src="/public/bower_components/gfl-text-avatar/dist/gfl-text-avatar.min.js"></script>
+
+
     <script src="/public/js/app.js"></script>
     {{range .moreStyles}}
       <link rel="stylesheet" type="text/css" href="/public/{{.}}">

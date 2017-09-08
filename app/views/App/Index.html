@@ -1,12 +1,12 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
 
-<nav class="navbar navbar-warning">
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="btn btn-danger btn-raised navbar-btn">SPNT</button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <!--<button type="button" class="btn btn-danger btn-raised navbar-btn">SPNT</button> -->
+      <a class="navbar-brand" href="#">SPNT</a>
     </div>
     <div class="navbar-collapse collapse navbar-warning-collapse">
         <ul class="nav navbar-nav">
@@ -17,76 +17,60 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid" style="padding: 20px;">
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <i class="material-icons" style="font-size:100px;">comment</i>
-      <div class="caption">
-        <h3>Komante</h3>
-        <p>Lis komante yo</p>
-        <p>
-        <a href="/show/comment" class="btn btn-primary btn-raised" role="button">Antre</a> 
-        </p>
+<div class="container-fluid" style="margin-top: 80px; margin-bottom: 50px;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+           <img class="d-block w-100" src="https://static.pexels.com/photos/248797/pexels-photo-248797.jpeg" alt="First slide">
+           <div class="carousel-caption d-none d-md-block">
+            <h3>Thasdjaskdodfbsjfbksaf asdasda</h3>
+            <p>adaskhadkadka abdkjasbdjabd adajsvdj sdv jajsvd jad sdvhasd as</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://www.w3schools.com/css/trolltunga.jpg" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Tsdfnjgksfd sdbfsndfm sdf ds</h3>
+            <p>dsbdnfmsdbf sdfb nsmd bmsnf smfs dmsf dmf</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="http://www.xsjjys.com/data/out/62/WHDQ-512071516.jpg" alt="Third slide">\
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Thsdmnflkn l snbfsmd kj </h3>
+            <p>Insnd fsm  sd fmsdf  sd fsfsdf sfsdfsd fsfsdf. sdf sdf. sdf sf. sfsdjs</p>
+          </div>
+        </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </div>
-  
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <i class="material-icons" style="font-size:100px;">class</i>
-      <div class="caption">
-        <h3>Klass</h3>
-        <p>Lis klass yo</p>
-        <p>
-        <a href="/show/event" class="btn btn-primary btn-raised" role="button">Antre</a> 
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <i class="material-icons" style="font-size:100px;">thumb_up</i>
-      <div class="caption">
-        <h3>Sponso</h3>
-        <p>Lis sponso yo</p>
-        <p>
-        <a href="/show/sponsor" class="btn btn-primary btn-raised" role="button">Antre</a> 
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <i class="material-icons" style="font-size:100px;">blur_on</i>
-      <div class="caption">
-        <h3>Opsyon</h3>
-        <p>Lis opsyon yo</p>
-        <p>
-        <a href="/show/option" class="btn btn-primary btn-raised" role="button">Antre</a> 
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <i class="material-icons" style="font-size:100px;">videocam</i>
-      <div class="caption">
-        <h3>Videyo</h3>
-        <p>List videyo yo</p>
-        <p>
-        <a href="/show/video" class="btn btn-primary btn-raised" role="button">Antre</a> 
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  
-  
 </div>
+<div class="row">
+    <div class="col-md-4" ng-controller="OptionController">
+        <div class="row" ng-repeat="option in options">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">{{ "{{option.title}}" }}</div>
+                  <gfl-text-avatar>{{ "{{option.title}}" }}</gfl-text-avatar>
+                  <div class="panel-body">
+                    {{ "{{option.description}}" }}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container">

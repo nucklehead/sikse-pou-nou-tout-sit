@@ -78,3 +78,11 @@ GET     /video/:id                          VideoController.Show
 PUT     /video/:id                          VideoController.Update
 DELETE  /video/:id                          VideoController.Delete
 GET     /show/video/                        VideoController.ShowList
+
+# Banner
+POST    /banner/                             BannerController.Create
+GET     /banner/                             BannerController.Index
+GET     /banner/:id                          BannerController.Show
+PUT     /banner/:id                          BannerController.Update
+DELETE  /banner/:id                          BannerController.Delete
+GET     /banner/video/                        BannerController.ShowList

@@ -8,46 +8,46 @@ import (
 	"github.com/nucklehead/sikse-pou-nou-tout-sit/app/models"
 )
 
-type CommentController struct {
+type BannerController struct {
 	*revel.Controller
 }
 
-func (c CommentController) Index() revel.Result {
+func (c BannerController) Index() revel.Result {
 	var (
-		comments []models.Comment
-		err      error
+		banners []models.Banner
+		err     error
 	)
-	comments, err = models.GetComments()
+	banners, err = models.GetBanners()
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
 		return c.RenderJSON(errResp)
 	}
 	c.Response.Status = 200
-	return c.RenderJSON(comments)
+	return c.RenderJSON(banners)
 }
 
-func (c CommentController) Show(id string) revel.Result {
+func (c BannerController) Show(id string) revel.Result {
 	var (
-		comment   models.Comment
-		err       error
-		commentID bson.ObjectId
+		banner   models.Banner
+		err      error
+		bannerID bson.ObjectId
 	)
 
 	if id == "" {
-		errResp := buildErrResponse(errors.New("Invalid comment id format"), "400")
+		errResp := buildErrResponse(errors.New("Invalid banner id format"), "400")
 		c.Response.Status = 400
 		return c.RenderJSON(errResp)
 	}
 
-	commentID, err = convertToObjectIdHex(id)
+	bannerID, err = convertToObjectIdHex(id)
 	if err != nil {
-		errResp := buildErrResponse(errors.New("Invalid comment id format"), "400")
+		errResp := buildErrResponse(errors.New("Invalid banner id format"), "400")
 		c.Response.Status = 400
 		return c.RenderJSON(errResp)
 	}
 
-	comment, err = models.GetComment(commentID)
+	banner, err = models.GetBanner(bannerID)
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
@@ -55,79 +55,79 @@ func (c CommentController) Show(id string) revel.Result {
 	}
 
 	c.Response.Status = 200
-	return c.RenderJSON(comment)
+	return c.RenderJSON(banner)
 }
 
-func (c CommentController) Create() revel.Result {
+func (c BannerController) Create() revel.Result {
 	var (
-		comment models.Comment
-		err     error
+		banner models.Banner
+		err    error
 	)
-    revel.INFO.Printf("Body is: %+v", c.Request.Body)
-	err = json.NewDecoder(c.Request.Body).Decode(&comment)
+
+	err = json.NewDecoder(c.Request.Body).Decode(&banner)
 	if err != nil {
 		errResp := buildErrResponse(err, "403")
 		c.Response.Status = 403
 		return c.RenderJSON(errResp)
 	}
 
-	comment, err = models.AddComment(comment)
+	banner, err = models.AddBanner(banner)
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
 		return c.RenderJSON(errResp)
 	}
 	c.Response.Status = 201
-	return c.RenderJSON(comment)
+	return c.RenderJSON(banner)
 }
 
-func (c CommentController) Update() revel.Result {
+func (c BannerController) Update() revel.Result {
 	var (
-		comment models.Comment
-		err     error
+		banner models.Banner
+		err    error
 	)
-	err = json.NewDecoder(c.Request.Body).Decode(&comment)
+	err = json.NewDecoder(c.Request.Body).Decode(&banner)
 	if err != nil {
 		errResp := buildErrResponse(err, "400")
 		c.Response.Status = 400
 		return c.RenderJSON(errResp)
 	}
 
-	err = comment.UpdateComment()
+	err = banner.UpdateBanner()
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
 		return c.RenderJSON(errResp)
 	}
-	return c.RenderJSON(comment)
+	return c.RenderJSON(banner)
 }
 
-func (c CommentController) Delete(id string) revel.Result {
+func (c BannerController) Delete(id string) revel.Result {
 	var (
-		err       error
-		comment   models.Comment
-		commentID bson.ObjectId
+		err      error
+		banner   models.Banner
+		bannerID bson.ObjectId
 	)
 	if id == "" {
-		errResp := buildErrResponse(errors.New("Invalid comment id format"), "400")
+		errResp := buildErrResponse(errors.New("Invalid banner id format"), "400")
 		c.Response.Status = 400
 		return c.RenderJSON(errResp)
 	}
 
-	commentID, err = convertToObjectIdHex(id)
+	bannerID, err = convertToObjectIdHex(id)
 	if err != nil {
-		errResp := buildErrResponse(errors.New("Invalid comment id format"), "400")
+		errResp := buildErrResponse(errors.New("Invalid banner id format"), "400")
 		c.Response.Status = 400
 		return c.RenderJSON(errResp)
 	}
 
-	comment, err = models.GetComment(commentID)
+	banner, err = models.GetBanner(bannerID)
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
 		return c.RenderJSON(errResp)
 	}
-	err = comment.DeleteComment()
+	err = banner.DeleteBanner()
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
@@ -137,12 +137,12 @@ func (c CommentController) Delete(id string) revel.Result {
 	return c.RenderJSON(nil)
 }
 
-func (c CommentController) ShowList() revel.Result {
-	comments, err := models.GetComments()
+func (c BannerController) ShowList() revel.Result {
+	banners, err := models.GetBanners()
 	if err != nil {
 		errResp := buildErrResponse(err, "500")
 		c.Response.Status = 500
 		return c.RenderJSON(errResp)
 	}
-	return c.Render(comments)
+	return c.Render(banners)
 }

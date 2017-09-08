@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+.carousel-item { 
+    width: 100%; 
+    height: 300px; 
+    overflow: hidden; 
+}
